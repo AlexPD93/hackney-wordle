@@ -1,7 +1,7 @@
 import WORDS from "./words.js";
 
-const rows = 6;
-let guessesRemaining = rows;
+const totalRows = 6;
+let guessesRemaining = totalRows;
 let currentGuess = [];
 let currentTile = 0;
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)];
@@ -9,7 +9,7 @@ let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)];
 function initBoard() {
   let board = document.getElementById("game-board");
 
-  for (let i = 0; i < rows; i++) {
+  for (let i = 0; i < totalRows; i++) {
     let row = document.createElement("div");
     row.className = "letter-row";
 
