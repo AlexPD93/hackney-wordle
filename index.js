@@ -1,15 +1,15 @@
 import WORDS from "./words.js";
 
-const numberOfGuesses = 6;
-let guessesRemaining = numberOfGuesses;
+const rows = 6;
+let guessesRemaining = rows;
 let currentGuess = [];
-let nextLetter = 0;
+let currentTile = 0;
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)];
 
 function initBoard() {
   let board = document.getElementById("game-board");
 
-  for (let i = 0; i < numberOfGuesses; i++) {
+  for (let i = 0; i < rows; i++) {
     let row = document.createElement("div");
     row.className = "letter-row";
 
@@ -21,6 +21,33 @@ function initBoard() {
 
     board.appendChild(row);
   }
+}
+
+document.addEventListener("keyup", (e) => {
+  let pressedKey = e.key;
+
+  let letterMatched = pressedKey.match(/[a-z]/gi);
+
+  if (!letterMatched || letterMatched.length > 1) {
+    return;
+  } else {
+    addLetterToBoard(pressedKey);
+  }
+});
+
+function addLetterToBoard(pressedKey) {
+  if (currentTile === 5) {
+    return;
+  }
+  pressedKey = pressedKey.toLowerCase();
+
+  let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining];
+  let box = row.children[currentTile];
+
+  box.textContent = pressedKey;
+  box.classList.add("filled-box");
+  currentGuess.push(pressedKey);
+  currentTile += 1;
 }
 
 initBoard();
