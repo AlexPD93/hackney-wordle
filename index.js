@@ -169,6 +169,25 @@ function fillKeyboard(letter, letterColour) {
   });
 }
 
+const modeToggleButton = document.getElementById("modeToggleButton");
+let lightMode = true;
+modeToggleButton.addEventListener("click", toggleMode);
+
+function toggleMode() {
+  let body = document.body;
+  const button = modeToggleButton.querySelector("i");
+  if (lightMode) {
+    button.classList.remove("fa-moon");
+    button.classList.add("fa-sun");
+    body.classList.replace("light-mode-body", "dark-mode-body");
+  } else {
+    button.classList.remove("fa-sun");
+    button.classList.add("fa-moon");
+    body.classList.replace("dark-mode-body", "light-mode-body");
+  }
+  lightMode = !lightMode;
+}
+
 initBoard();
 
 // If guess has double letter but correct word only has one only highlight one letter

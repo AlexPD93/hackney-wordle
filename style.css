@@ -4,6 +4,11 @@ body {
   margin: 0 auto;
 }
 
+.dark-mode-body {
+  background-color: #1a1a1b;
+  color: white;
+}
+
 header {
   margin: 0 auto;
   padding: 1rem;
@@ -18,7 +23,8 @@ h1 {
   text-align: center;
 }
 
-.header-button {
+.mode-toggle-button,
+.instruction-button {
   background: none;
   border: none;
   font-size: 1.5em;
@@ -26,8 +32,13 @@ h1 {
   padding: 10px;
 }
 
-.header-button:hover {
+.mode-toggle-button:hover,
+.instruction-button:hover {
   cursor: pointer;
+}
+
+i {
+  color: #8c8c8d;
 }
 
 #game-board {
