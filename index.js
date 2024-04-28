@@ -5,23 +5,6 @@ let guessesRemaining = totalRows;
 let currentGuess = [];
 let currentTile = 0;
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)];
-console.log(rightGuessString);
-function initBoard() {
-  let board = document.getElementById("game-board");
-
-  for (let i = 0; i < totalRows; i++) {
-    let row = document.createElement("div");
-    row.className = "letter-row";
-
-    for (let j = 0; j < 5; j++) {
-      let box = document.createElement("div");
-      box.className = "letter-box";
-      row.appendChild(box);
-    }
-
-    board.appendChild(row);
-  }
-}
 
 document.addEventListener("keyup", (e) => {
   let pressedKey = e.key;
@@ -187,7 +170,3 @@ function toggleMode() {
   }
   lightMode = !lightMode;
 }
-
-initBoard();
-
-// If guess has double letter but correct word only has one only highlight one letter
