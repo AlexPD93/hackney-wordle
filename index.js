@@ -43,6 +43,26 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
+document.addEventListener("click", (e) => {
+  let clickedKey = e.target.innerHTML;
+
+  if (clickedKey === "Del") {
+    removeLetterFromBoard();
+  }
+
+  if (clickedKey === "Enter") {
+    checkGuess();
+  }
+
+  let letterMatched = clickedKey.match(/[a-z]/gi);
+
+  if (!letterMatched || letterMatched.length > 1) {
+    return;
+  } else {
+    addLetterToBoard(pressedKey);
+  }
+});
+
 function addLetterToBoard(pressedKey) {
   if (currentTile === 5) {
     return;
