@@ -59,7 +59,7 @@ document.addEventListener("click", (e) => {
   if (!letterMatched || letterMatched.length > 1) {
     return;
   } else {
-    addLetterToBoard(pressedKey);
+    addLetterToBoard(clickedKey);
   }
 });
 
