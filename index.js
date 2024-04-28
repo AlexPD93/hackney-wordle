@@ -87,6 +87,7 @@ function removeLetterFromBoard() {
   let box = currentRow.children[currentTile - 1];
 
   box.textContent = "";
+  box.classList.remove("filled-box");
   currentGuess.pop();
   currentTile -= 1;
 }
