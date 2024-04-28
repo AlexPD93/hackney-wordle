@@ -4,12 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/22ca1cdaec.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Wordle</title>
   </head>
   <body>
     <header>
-      <h1>Wordle</h1>
+      <div class="header-flex-container">
+        <button class="header-button sun light" aria-label="toggle night mode">
+          <i class="fas fa-sun"></i>
+        </button>
+        <h1>Wordle</h1>
+        <button
+          class="header-button instruction-toggle light"
+          aria-label="help"
+        >
+          <i class="far fa-question-circle"></i>
+        </button>
+      </div>
     </header>
     <div id="game-board"></div>
     <div id="keyboard-cont">
