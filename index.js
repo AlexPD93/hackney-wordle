@@ -100,12 +100,20 @@ function checkGuess() {
   guessString = currentGuess.join("");
 
   if (guessString.length < 5) {
-    console.log("not enough letters");
+    swal("Not enough letters", {
+      buttons: false,
+      timer: 1500,
+      icon: "warning",
+    });
     return;
   }
 
   if (!WORDS.includes(guessString)) {
-    console.log("word not in list!");
+    swal("Not in word list", {
+      buttons: false,
+      timer: 1500,
+      icon: "warning",
+    });
     return;
   }
 
@@ -134,7 +142,11 @@ function checkGuess() {
   }
 
   if (guessString === rightGuessString) {
-    console.log("You won!");
+    swal("Genius!", {
+      buttons: false,
+      timer: 1500,
+      icon: "success",
+    });
     guessesRemaining = 0;
   }
 
