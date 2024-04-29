@@ -15,6 +15,8 @@ let currentTile = 0;
 // Randomly pick a word from the words array
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)];
 
+let wonGame = false;
+
 // Event listner to recognise when a letter key, enter or backspace is pressed
 document.addEventListener("keyup", handleKeyPress);
 
@@ -101,6 +103,10 @@ function checkGuess() {
     return;
   }
 
+  if (guessesRemaining === 1 && wonGame === false) {
+    showErrorMessage("Better luck next time");
+  }
+
   for (let i = 0; i < currentGuess.length; i++) {
     let box = currentRow.children[i];
 
@@ -128,6 +134,7 @@ function checkGuess() {
 
   if (guessString === rightGuessString) {
     showSuccessMessage("Genius!", "success");
+    wonGame = true;
     guessesRemaining = 0;
   }
 
@@ -155,6 +162,14 @@ function showWarningMessage(message) {
     buttons: false,
     timer: 1500,
     icon: "warning",
+  });
+}
+
+function showErrorMessage(message) {
+  swal(message, {
+    buttons: false,
+    timer: 1500,
+    icon: "error",
   });
 }
 
