@@ -1,6 +1,6 @@
 # Wordle Clone Hackney Council
 
-🎮 Task set by Hackney Council to create a Wordle clone. [Link here](https://github.com/AlexPD93/hackney-wordle)
+🎮 Task set by Hackney Council to create a Wordle clone. [Link here](https://alexpd93.github.io/hackney-wordle/)
 
 ## User Journey
 
