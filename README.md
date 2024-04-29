@@ -12,8 +12,8 @@ Interview task set by Hackney Council to create a Wordle clone.
 
 ## Code Features
 
-* Hidden pop-up messagaes that showcase CSS animation when changing between hidden and visible
+* Option for user to play with keyboard or buttons on the screen
+
+* Ability to see if guess is correct or not
 
 * Lightmode / darkmode toggle
-
-* Option for user to play with keyboard or buttons on the screen
