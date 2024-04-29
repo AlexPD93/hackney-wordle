@@ -1,21 +1,32 @@
 import WORDS from "./words.js";
 
 const totalRows = 6;
+const maxLettersPerRow = 5;
+
+// Amount of guess rows remaining
 let guessesRemaining = totalRows;
+
+// Array of letters that make up the current guess
 let currentGuess = [];
+
+// Tile that letter will go in
 let currentTile = 0;
+
+// Randomly pick a word from the words array
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)];
 
-document.addEventListener("keyup", (e) => {
+// Event listner to recognise when a letter key, enter or backspace is pressed
+document.addEventListener("keyup", handleKeyPress);
+
+// Event listner to recognise when a letter key, enter or delete is clicked
+document.addEventListener("click", handleKeyClick);
+
+function handleKeyPress(e) {
   let pressedKey = e.key;
 
-  if (pressedKey === "Backspace") {
-    removeLetterFromBoard();
-  }
+  if (pressedKey === "Backspace") removeLetterFromBoard();
 
-  if (pressedKey === "Enter") {
-    checkGuess();
-  }
+  if (pressedKey === "Enter") checkGuess();
 
   let letterMatched = pressedKey.match(/[a-z]/gi);
 
@@ -24,18 +35,14 @@ document.addEventListener("keyup", (e) => {
   } else {
     addLetterToBoard(pressedKey);
   }
-});
+}
 
-document.addEventListener("click", (e) => {
+function handleKeyClick(e) {
   let clickedKey = e.target.innerHTML;
 
-  if (clickedKey === "Del") {
-    removeLetterFromBoard();
-  }
+  if (clickedKey === "Del") removeLetterFromBoard();
 
-  if (clickedKey === "Enter") {
-    checkGuess();
-  }
+  if (clickedKey === "Enter") checkGuess();
 
   let letterMatched = clickedKey.match(/[a-z]/gi);
 
@@ -44,23 +51,25 @@ document.addEventListener("click", (e) => {
   } else {
     addLetterToBoard(clickedKey);
   }
-});
+}
 
-function addLetterToBoard(pressedKey) {
-  if (currentTile === 5) {
+function addLetterToBoard(letter) {
+  // Won't add a letter to the row if there is a letter in the 5th tile of the row
+  if (currentTile === maxLettersPerRow) {
     return;
   }
-  pressedKey = pressedKey.toLowerCase();
+  letter = letter.toLowerCase();
 
+  // To determine current row it takes the guessesRemaining away from 6. guessesRemaining will not go below 1
   let currentRow =
     document.getElementsByClassName("letter-row")[6 - guessesRemaining];
 
   let box = currentRow.children[currentTile];
 
-  box.textContent = pressedKey;
+  box.textContent = letter;
   box.classList.add("filled-box");
-  currentGuess.push(pressedKey);
-  currentTile += 1;
+  currentGuess.push(letter);
+  currentTile++;
 }
 
 function removeLetterFromBoard() {
@@ -72,7 +81,7 @@ function removeLetterFromBoard() {
   box.textContent = "";
   box.classList.remove("filled-box");
   currentGuess.pop();
-  currentTile -= 1;
+  currentTile--;
 }
 
 function checkGuess() {
@@ -82,21 +91,13 @@ function checkGuess() {
 
   guessString = currentGuess.join("");
 
-  if (guessString.length < 5) {
-    swal("Not enough letters", {
-      buttons: false,
-      timer: 1500,
-      icon: "warning",
-    });
+  if (guessString.length < maxLettersPerRow) {
+    showWarningMessage("Not enough letters");
     return;
   }
 
   if (!WORDS.includes(guessString)) {
-    swal("Not in word list", {
-      buttons: false,
-      timer: 1500,
-      icon: "warning",
-    });
+    showWarningMessage("Not in word list");
     return;
   }
 
@@ -105,6 +106,7 @@ function checkGuess() {
 
     let letter = currentGuess[i];
 
+    // Position of letter within currentGuess string
     let letterPosition = rightGuessString.indexOf(currentGuess[i]);
 
     if (letterPosition === -1) {
@@ -125,11 +127,7 @@ function checkGuess() {
   }
 
   if (guessString === rightGuessString) {
-    swal("Genius!", {
-      buttons: false,
-      timer: 1500,
-      icon: "success",
-    });
+    showSuccessMessage("Genius!", "success");
     guessesRemaining = 0;
   }
 
@@ -149,6 +147,22 @@ function fillKeyboard(letter, letterColour) {
     if (letter === key.textContent) {
       key.style.backgroundColor = letterColour;
     }
+  });
+}
+
+function showWarningMessage(message) {
+  swal(message, {
+    buttons: false,
+    timer: 1500,
+    icon: "warning",
+  });
+}
+
+function showSuccessMessage(message) {
+  swal(message, {
+    buttons: false,
+    timer: 1500,
+    icon: "success",
   });
 }
 
