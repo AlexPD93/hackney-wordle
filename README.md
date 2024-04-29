@@ -1,30 +1,26 @@
-# Wordle Clone Hackney Council 
+# Wordle Clone Hackney Council
 
-Task set by Hackney Council to create a Wordle clone. Link [here](https://alexpd93.github.io/hackney-wordle/) .
+🎮 Task set by Hackney Council to create a Wordle clone. [Link here](https://github.com/AlexPD93/hackney-wordle)
 
 ## User Journey
 
-1. Use your keyboard or the buttons on the screen to guess a five letter word
+Use your keyboard ⌨️ or the buttons on the screen to guess a five-letter word.
 
-2. Correct letters in the wrong place display yellow, right letter right place display green, wrong letter displays grey.
+Correct letters in the wrong place display yellow, right letter right place display green, wrong letter displays grey.
 
-3. Keep guessing until you get the right word!
+Keep guessing until you get the right word!
 
 ## Code Features
 
-* Option for user to play with keyboard or buttons on the screen
+- Option for user to play with keyboard or buttons on the screen
+- Ability to see if guess is correct or not
+- Light mode / dark mode toggle 🌞🌙
 
-* Ability to see if guess is correct or not
+## Still to Complete
 
-* Lightmode / darkmode toggle
-
-## Still to complete 
-
-* Add ability to see game instructions
-
-* Add ability to see stats
-
-* Make game responsive on all devices
+- Add ability to see game instructions ℹ️
+- Add ability to see stats 📊
+- Make game responsive on all devices 📱💻
 
 ## Previews
 
